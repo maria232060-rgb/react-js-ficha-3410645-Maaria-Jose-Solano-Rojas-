@@ -78,3 +78,20 @@ const productos = [
 ];
 
 console.log("Lista de productos cargada:", productos);
+
+productos.forEach((producto, indice) => {
+  console.log(`${indice + 1}. ${producto.nombre} - \$${producto.precio} - stock: ${producto.stock}`);
+});
+
+
+const nombres = productos.map(producto => producto.nombre);
+console.log("Nombres:", nombres);
+
+const preciosConIva = productos.map(producto => producto.precio * 1.19);
+console.log("Precios con IVA:", preciosConIva);
+
+const nombresMayuscula = productos.map(producto => producto.nombre.toUpperCase());
+console.log("Nombres en mayúscula:", nombresMayuscula);
+
+const resumenProductos = productos.map(producto => `${producto.nombre} cuesta \$${producto.precio}`);
+console.log("Resumen de productos:", resumenProductos);
