@@ -95,3 +95,67 @@ console.log("Nombres en mayúscula:", nombresMayuscula);
 
 const resumenProductos = productos.map(producto => `${producto.nombre} cuesta \$${producto.precio}`);
 console.log("Resumen de productos:", resumenProductos);
+//RETO6
+const disponibles = productos.filter(producto => producto.stock > 0);
+console.log("Productos disponibles:", disponibles);
+
+const producto3 = productos.find(producto => producto.id === 3);
+console.log("Producto con id 3:", producto3);
+
+
+const mayoresA100k = productos.filter(producto => producto.precio > 100000);
+console.log("Productos con precio > $100.000:", mayoresA100k);
+
+const entre50y200k = productos.filter(producto => producto.precio >= 50000 && producto.precio <= 200000);
+console.log("Productos entre $50.000 y $200.000:", entre50y200k);
+
+const categoriaPerifericos = productos.filter(producto => producto.categoria === 'Perifericos');
+console.log("Productos de categoría Periféricos:", categoriaPerifericos);
+
+const producto5 = productos.find(producto => producto.id === 5);
+console.log("Producto con id 5:", producto5);
+
+function buscarProducto(idBuscado) {
+  return productos.find(producto => producto.id === idBuscado);
+}
+console.log("Resultado de buscarProducto(2):", buscarProducto(2));
+
+// 7
+const hayAgotados = productos.some(producto => producto.stock === 0);
+console.log("¿Existe algún producto agotado?:", hayAgotados);
+
+const hayCaros = productos.some(producto => producto.precio > 1000000);
+console.log("¿Existe algún producto mayor a $1.000.000?:", hayCaros);
+
+const preciosValidos = productos.every(producto => producto.precio > 0);
+console.log("¿Todos tienen precio mayor a 0?:", preciosValidos);
+
+const stockValido = productos.every(producto => producto.stock >= 0);
+console.log("¿Todos tienen stock mayor o igual a 0?:", stockValido);
+
+const valorInventario = productos.reduce(
+  (total, producto) => total + (producto.precio * producto.stock), 
+  0
+);
+console.log("Valor total del inventario: \$", valorInventario);
+
+// 8
+console.log(`El producto ${productos[0].nombre} cuesta \$${productos[0].precio}`);
+
+const { nombre, precio, stock } = productos[0];
+console.log("Desestructurado:", nombre, precio, stock);
+
+const productoActualizado = {
+  ...productos[0],
+  precio: 55000,
+  stock: 8
+};
+console.log("Producto original:", productos[0].precio);
+console.log("Producto actualizado:", productoActualizado);
+
+const estado = productoActualizado.stock > 0 ? 'Disponible' : 'Agotado';
+console.log("Estado con ternario:", estado);
+
+const fraseEstado = `El producto ${productoActualizado.nombre} está ${productoActualizado.stock > 0 ? 'Disponible' : 'Agotado'}`;
+console.log(fraseEstado);
+
